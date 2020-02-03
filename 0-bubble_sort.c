@@ -9,7 +9,7 @@ int _unsorted(int *array, size_t size)
 {
 	size_t i  = 0;
 
-	for (i = 0; i < (size - 2); i++)
+	for (i = 0; i < (size - 1); i++)
 	{
 		if (array[i] > array[i + 1])
 			return (1);

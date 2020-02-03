@@ -8,9 +8,13 @@
 void selection_sort(int *array, size_t size)
 {
 	size_t i = 0, j = 0;
-	int aux = 0, pos;
+	int aux = 0, pos, f = 0;
 
-	for (i = 0; i < size - 3; i++)
+	if (!array)
+	{
+		return;
+	}
+	for (i = 0; i < size - 2; i++)
 	{
 		aux = array[i];
 		for (j = i; j < size; j++)
@@ -19,10 +23,15 @@ void selection_sort(int *array, size_t size)
 			{
 				aux = array[j];
 				pos = j;
+				f = 1;
 			}
 		}
+		if (f)
+		{
 		array[pos] = array[i];
 		array[i] = aux;
 		print_array(array, size);
+		f = 0;
+		}
 	}
 }

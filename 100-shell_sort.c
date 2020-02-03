@@ -13,15 +13,18 @@ void shell_sort(int *array, size_t size)
 	while (g < size)
 		g = (g * 3) + 1;
 	g = (g - 1) / 3;
-	for ( ; g > 0; g = (g - 1) / 3)
+	while (g > 0)
 	{
-		for (i = g; i < size; i++)
+		i = g;
+		while (i < size)
 		{
 			aux = array[i];
 			for (j = i; j >= g && array[j - g] > aux; j = j - g)
 				array[j] = array[j - g];
 			array[j] = aux;
+			i++;
 		}
 		print_array(array, size);
+		g = (g - 1) / 3;
 	}
 }

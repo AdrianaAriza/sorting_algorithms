@@ -11,7 +11,7 @@ void insertion_sort_list(listint_t **list)
 	if (!list || !*list)
 		return;
 	aux = *list;
-	while (aux->n < aux->next->n)
+	while (aux->n <= aux->next->n)
 	{
 		aux = aux->next;
 		if (!aux->next)

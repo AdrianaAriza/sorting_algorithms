@@ -26,12 +26,12 @@ void selection_sort(int *array, size_t size)
 				f = 1;
 			}
 		}
-		if (f && array[j] >aux)
+		if (f)
 		{
-		array[pos] = array[i];
-		array[i] = aux;
-		print_array(array, size);
-		f = 0;
+			array[pos] = array[i];
+			array[i] = aux;
+			print_array(array, size);
+			f = 0;
 		}
 	}
 }

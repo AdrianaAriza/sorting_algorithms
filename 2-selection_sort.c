@@ -10,14 +10,14 @@ void selection_sort(int *array, size_t size)
 	size_t i = 0, j = 0;
 	int aux = 0, pos, f = 0;
 
-	if (!array || !array[1] || size < 1)
+	if (!array || !size)
 	{
 		return;
 	}
 	for (i = 0; i < size - 2; i++)
 	{
 		aux = array[i];
-		for (j = i; j < size; j++)
+		for (j = i + 1; j < size; j++)
 		{
 			if (array[j] < aux)
 			{

@@ -1,20 +1,59 @@
 #include "sort.h"
 /**
- *unsorted - checks if is unsorted
+ *partition - makes partition
  *@array: array
+ *@lo: lowest
+ *@hi: hightest
+ *@size: size
+ *Return: int
+ */
+int partition(int *array, int lo, int hi, size_t size)
+{
+	int pivot = 0, aux = 0, i = 0, j = 0;
+
+	pivot = array[hi];
+	i = lo;
+	for (j = lo; j < hi; j++)
+	{
+		if (array[j] < pivot)
+		{
+			if (i != j)
+			{
+				aux = array[i];
+				array[i] = array[j];
+				array[j] = aux;
+				print_array(array, size);
+			}
+			i++;
+		}
+	}
+	if (i != j)
+	{
+		aux = array[i];
+		array[i] = array[j];
+		array[j] = aux;
+		print_array(array, size);
+	}
+	return (i);
+}
+/**
+ *_quick_sort - checks if is unsorted
+ *@array: array
+ *@lo: lowest
+ *@hi: hightest
  *@size: size
  *Return: void
  */
-int unsorted(int *array, size_t size)
+void _quick_sort(int *array, int lo, int hi, size_t size)
 {
-	size_t i  = 0;
+	int p = 0;
 
-	for (i = 0; i < (size - 2); i++)
+	if (lo < hi)
 	{
-		if (array[i] > array[i + 1])
-			return (1);
+		p = partition(array, lo, hi, size);
+		_quick_sort(array, lo, p - 1, size);
+		_quick_sort(array, p + 1, hi, size);
 	}
-	return (0);
 }
 /**
  *quick_sort - checks if is unsorted
@@ -24,36 +63,5 @@ int unsorted(int *array, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-	int pivot_swap = 0;
-	size_t i = 0, j = 0;
-	int *piv = &array[size - 1];
-
-	while (unsorted(array, size))
-	{
-		i = 0;
-		while (array[i] < *piv)
-			i++;
-		if (i < (size - 1) && (&array[i] != piv))
-		{
-			pivot_swap = array[i];
-			j = i + 1;
-			while (array[j] && *piv <= array[j])
-				j++;
-			if (j >= size)
-			{
-				array[i] = *piv;
-				*piv = pivot_swap;
-				print_array(array, size);
-			}
-			else
-			{
-				pivot_swap = array[j];
-				array[j] = array[i];
-				array[i] = pivot_swap;
-				print_array(array, size);
-			}
-		}
-		else
-			piv--;
-	}
+	_quick_sort(array, 0, size - 1, size);
 }

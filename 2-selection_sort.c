@@ -26,7 +26,7 @@ void selection_sort(int *array, size_t size)
 				f = 1;
 			}
 		}
-		if (f)
+		if (f && array[j] >aux)
 		{
 		array[pos] = array[i];
 		array[i] = aux;

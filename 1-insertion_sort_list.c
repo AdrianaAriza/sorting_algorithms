@@ -26,6 +26,11 @@ void insertion_sort_list(listint_t **list)
 	aux->prev = _prev;
 	if (_tmp == NULL)
 	{
+		if (!_next)
+		{
+			*list = _prev;
+			return;
+		}
 		_next->prev = aux;
 		*list = _prev;
 	}

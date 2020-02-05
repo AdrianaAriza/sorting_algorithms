@@ -15,7 +15,16 @@ void merge_sort(int *array, size_t size)
 	{
 		n_size = size / 2;
 		merge_sort(array, n_size);
-		merge_sort(&array[n_size], size - n_size);
+		merge_sort(&array[n_size], size - n_size); }
+	if (size > 1)
+	{
+		sr = size / 2;
+		sl = size - (size / 2);
+		printf("Merging...\n");
+		printf("[left]: ");
+		print_array(array, sr);
+		printf("[right]: ");
+		print_array(&array[sr], sl);
 		for (n = size - 1; n > 0; n--)
 		{
 			j = 0;
@@ -26,24 +35,6 @@ void merge_sort(int *array, size_t size)
 				aux = array[n];
 				array[n++] = array[j];
 				array[j] = aux; } }
-		printf("[Done]: ");
-		print_array(array, size); }
-	if (size > 1)
-	{
-		sr = size / 2;
-		sl = size - (size / 2);
-		printf("Merging...\n");
-		printf("[left]: ");
-		print_array(array, sr);
-		printf("[right]: ");
-		print_array(&array[sr], sl); }
-	if (size == 2)
-	{
-		if (array[0] > array[1])
-		{
-			aux = array[1];
-			array[1] = array[0];
-			array[0] = aux;	}
 		printf("[Done]: ");
 		print_array(array, size); }
 }

@@ -27,7 +27,7 @@ void radix_sort(int *array, size_t size)
 		sum = 0;
 		for (i = 0; i <= 9; i++)
 			a[i] = 0;
-		for (i = 0; i <= 9 ; i++)
+		for (i = 0; i < (int)size  ; i++)
 			a[array[i] / mod % 10] += 1;
 		for (i = 0; i <= 9; i++)
 		{
